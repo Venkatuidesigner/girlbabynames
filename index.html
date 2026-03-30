@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>தமிழ் குழந்தை பெயர்கள்</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: "Inter", "Noto Sans Tamil", "Noto Serif Tamil", system-ui, sans-serif;
+      --background: radial-gradient(circle at top left, rgba(130, 80, 223, 0.14), transparent 28%),
+                    radial-gradient(circle at bottom right, rgba(16, 185, 129, 0.12), transparent 24%),
+                    #f8fafc;
+      --surface: rgba(255, 255, 255, 0.88);
+      --surface-strong: rgba(255, 255, 255, 0.96);
+      --border: rgba(255, 255, 255, 0.75);
+      --shadow: 0 26px 60px rgba(15, 23, 42, 0.12);
+      --text: #111827;
+      --muted: #475569;
+      --accent: #7c3aed;
+      --accent-strong: #5b21b6;
+      --accent-soft: #ede9fe;
+      --card: rgba(255, 255, 255, 0.94);
+      color: var(--text);
+      background: var(--background);
+    }
+    * {
+      box-sizing: border-box;
+    }
+    html, body {
+      margin: 0;
+      min-height: 100%;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      padding: 2rem 1rem 3rem;
+      background: var(--background);
+      color: var(--text);
+    }
+    .container {
+      width: min(1120px, 100%);
+      display: grid;
+      gap: 1.5rem;
+    }
+    header {
+      text-align: center;
+      padding: 2rem 2rem 1.75rem;
+      border-radius: 32px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+    header h1 {
+      margin: 0;
+      font-size: clamp(2.4rem, 4vw, 3.5rem);
+      letter-spacing: -0.04em;
+      line-height: 1.02;
+      color: #111827;
+    }
+    header p {
+      margin: 1rem auto 0;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+    .controls {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) 0.9fr;
+      gap: 1rem;
+      align-items: center;
+      padding: 1.25rem;
+      border-radius: 28px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+    .controls .group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      align-items: center;
+    }
+    .letter-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      padding: 0.75rem 1rem 0.25rem;
+      margin-top: -0.5rem;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(16px);
+      overflow-x: auto;
+    }
+    .letter-nav::-webkit-scrollbar {
+      height: 8px;
+    }
+    .letter-nav::-webkit-scrollbar-thumb {
+      background: rgba(124, 58, 237, 0.35);
+      border-radius: 999px;
+    }
+    .letter-chip {
+      border: 1px solid transparent;
+      background: rgba(124, 58, 237, 0.08);
+      color: #311b92;
+      border-radius: 999px;
+      padding: 0.65rem 0.95rem;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+      min-width: 3rem;
+    }
+    .letter-chip:hover {
+      transform: translateY(-1px);
+      background: rgba(124, 58, 237, 0.14);
+    }
+    .letter-chip.active {
+      background: linear-gradient(135deg, rgba(124, 58, 237, 0.2), rgba(124, 58, 237, 0.35));
+      border-color: rgba(124, 58, 237, 0.45);
+      color: #4c1d95;
+      font-weight: 600;
+    }
+    .controls label {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.98rem;
+      color: var(--muted);
+      min-width: 0;
+    }
+    .controls input,
+    .controls select {
+      flex: 1 1 220px;
+      min-width: 160px;
+      border: 1px solid rgba(148, 163, 184, 0.24);
+      background: rgba(255, 255, 255, 0.88);
+      border-radius: 18px;
+      padding: 0.95rem 1rem;
+      color: var(--text);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .controls input:focus,
+    .controls select:focus {
+      outline: none;
+      border-color: rgba(110, 61, 253, 0.45);
+      box-shadow: 0 0 0 4px rgba(110, 61, 253, 0.12);
+    }
+    .actions {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .controls button {
+      font: inherit;
+      border: none;
+      border-radius: 18px;
+      padding: 0.95rem 1.35rem;
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 14px 30px rgba(99, 102, 241, 0.16);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+      min-width: 110px;
+    }
+    .controls button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 30px rgba(99, 102, 241, 0.22);
+    }
+    .count {
+      font-size: 0.98rem;
+      color: var(--muted);
+      text-align: right;
+    }
+    .list-card {
+      padding: 1.5rem;
+      border-radius: 32px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+    .name-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.9rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .name-grid li {
+      padding: 1rem 1.1rem;
+      border-radius: 20px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(246, 248, 253, 0.96));
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      color: #111827;
+      font-size: 1rem;
+      line-height: 1.75;
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+    .name-grid li:hover {
+      transform: translateY(-4px);
+      background: #f7f3ff;
+      border-color: rgba(124, 58, 237, 0.32);
+      box-shadow: 0 18px 34px rgba(124, 58, 237, 0.12);
+    }
+    .name-group {
+      margin-bottom: 2rem;
+    }
+    .group-heading {
+      margin: 0 0 1rem;
+      font-size: 1.25rem;
+      color: #5b21b6;
+      letter-spacing: -0.02em;
+    }
+    footer {
+      text-align: center;
+      margin-top: 0.5rem;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+    @media (max-width: 900px) {
+      .controls {
+        grid-template-columns: 1fr;
+      }
+      .actions {
+        justify-content: stretch;
+      }
+      .controls button {
+        width: 100%;
+      }
+    }
+    @media (max-width: 640px) {
+      body {
+        padding: 1.25rem 0.75rem 2rem;
+      }
+      .container {
+        gap: 1.1rem;
+      }
+      header {
+        padding: 1.6rem 1.2rem 1.5rem;
+      }
+      .list-card {
+        padding: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>பெண் குழந்தை பெயர்கள்</h1>
+      <p>தமிழ் பெயர்களை பெறவும், தேடவும், மற்றும் தமிழ் எழுத்து ஒழுங்கில் வரிசைப்படுத்தவும்.</p>
+    </header>
+
+    <section class="controls">
+      <div class="group">
+        <label>
+          தேடுங்கள்:
+          <input id="searchInput" type="search" placeholder="பெயரை உள்ளிடுக" aria-label="Search Tamil names" />
+        </label>
+        <label>
+          துவக்க எழுத்து:
+          <select id="letterFilter">
+            <option value="">அனைத்தும்</option>
+          </select>
+        </label>
+      </div>
+      <div class="actions">
+        <button id="sortAsc">A → Z</button>
+        <button id="sortDesc">Z → A</button>
+      </div>
+    </section>
+
+    <div class="letter-nav" id="letterNav" aria-label="Tamil category letters"></div>
+
+    <div class="count" id="countText">சுமாராக 0 பெயர்கள்</div>
+    <div class="list-card">
+      <div id="nameList"></div>
+    </div>
+
+    <footer>இந்தப் பட்டியல் தமிழ் எழுத்து பிரிவுகளாக பகுக்கப்பட்ட names.js கோப்பிலிருந்து உருவாக்கப்பட்டது.</footer>
+  </div>
+
+  <script src="names.js"></script>
+  <script>
+    const collator = new Intl.Collator('ta', { sensitivity: 'base', usage: 'sort' });
+    const searchInput = document.getElementById('searchInput');
+    const letterFilter = document.getElementById('letterFilter');
+    const letterNav = document.getElementById('letterNav');
+    const sortAsc = document.getElementById('sortAsc');
+    const sortDesc = document.getElementById('sortDesc');
+    const nameList = document.getElementById('nameList');
+    const countText = document.getElementById('countText');
+
+    let namesByLetter = {};
+    let filteredByLetter = {};
+    let sortDirection = 'asc';
+    let letters = [];
+
+    function getInitial(name) {
+      const specialPrefixes = ["ஒள"];
+      for (const prefix of specialPrefixes) {
+        if (name.startsWith(prefix)) return prefix;
+      }
+      return name[0];
+    }
+
+    function groupNamesArray(nameArray) {
+      return nameArray.reduce((groups, name) => {
+        const initial = getInitial(name);
+        groups[initial] = groups[initial] || [];
+        groups[initial].push(name);
+        return groups;
+      }, {});
+    }
+
+    function sortNames(direction = 'asc') {
+      sortDirection = direction;
+      Object.keys(filteredByLetter).forEach(letter => {
+        filteredByLetter[letter].sort((a, b) => {
+          const result = collator.compare(a, b);
+          return direction === 'asc' ? result : -result;
+        });
+      });
+      renderNames();
+    }
+
+    function renderNames() {
+      nameList.innerHTML = '';
+      const fragment = document.createDocumentFragment();
+      let total = 0;
+
+      letters.forEach(letter => {
+        const group = filteredByLetter[letter];
+        if (!group || group.length === 0) return;
+        total += group.length;
+
+        const section = document.createElement('section');
+        section.className = 'name-group';
+
+        const heading = document.createElement('h2');
+        heading.className = 'group-heading';
+        heading.textContent = letter;
+        section.appendChild(heading);
+
+        const list = document.createElement('ul');
+        list.className = 'name-grid';
+        group.forEach(name => {
+          const li = document.createElement('li');
+          li.textContent = name;
+          list.appendChild(li);
+        });
+        section.appendChild(list);
+        fragment.appendChild(section);
+      });
+
+      nameList.appendChild(fragment);
+      countText.textContent = `சுமாராக ${total} பெயர்கள்`;
+    }
+
+    function updateFilters() {
+      const searchTerm = searchInput.value.trim();
+      const selectedLetter = letterFilter.value;
+      const searchGraphemes = [...searchTerm];
+      filteredByLetter = {};
+
+      letters.forEach(letter => {
+        if (selectedLetter && selectedLetter !== letter) return;
+        const group = namesByLetter[letter] || [];
+        const filteredGroup = group.filter(name => {
+          if (!searchTerm) return true;
+          return searchGraphemes.length === 1 ? name.startsWith(searchTerm) : name.includes(searchTerm);
+        });
+        if (filteredGroup.length) filteredByLetter[letter] = filteredGroup;
+      });
+
+      sortNames(sortDirection);
+    }
+
+    function updateLetterNavActive() {
+      const chips = letterNav.querySelectorAll('.letter-chip');
+      chips.forEach(chip => {
+        chip.classList.toggle('active', chip.dataset.letter === letterFilter.value);
+      });
+    }
+
+    function renderLetterNav(letters) {
+      letterNav.innerHTML = '';
+
+      const allChip = document.createElement('button');
+      allChip.type = 'button';
+      allChip.className = 'letter-chip';
+      allChip.textContent = 'அனைத்தும்';
+      allChip.dataset.letter = '';
+      allChip.addEventListener('click', () => {
+        letterFilter.value = '';
+        updateFilters();
+        updateLetterNavActive();
+      });
+      letterNav.appendChild(allChip);
+
+      letters.forEach(letter => {
+        const chip = document.createElement('button');
+        chip.type = 'button';
+        chip.className = 'letter-chip';
+        chip.textContent = letter;
+        chip.dataset.letter = letter;
+        chip.addEventListener('click', () => {
+          letterFilter.value = letter;
+          updateFilters();
+          updateLetterNavActive();
+        });
+        letterNav.appendChild(chip);
+      });
+      updateLetterNavActive();
+    }
+
+    function buildLetterOptions() {
+      letters = Object.keys(namesByLetter);
+      const tamilOrder = [
+        "அ", "ஆ", "இ", "ஈ", "உ", "ஊ", "எ", "ஏ", "ஐ", "ஒ", "ஓ", "ஒள",
+        "க", "ங", "ச", "ஞ", "ட", "ண", "த", "ந", "ப", "ம", "ய", "ர", "ல", "வ", "ழ", "ள", "ற", "ன"
+      ];
+      letters.sort((a, b) => {
+        const ai = tamilOrder.indexOf(a);
+        const bi = tamilOrder.indexOf(b);
+        if (ai !== -1 && bi !== -1) return ai - bi;
+        if (ai !== -1) return -1;
+        if (bi !== -1) return 1;
+        return collator.compare(a, b);
+      });
+
+      letters.forEach(letter => {
+        const option = document.createElement('option');
+        option.value = letter;
+        option.textContent = letter;
+        letterFilter.appendChild(option);
+      });
+      renderLetterNav(letters);
+    }
+
+    searchInput.addEventListener('input', updateFilters);
+    letterFilter.addEventListener('change', () => {
+      updateFilters();
+      updateLetterNavActive();
+    });
+    sortAsc.addEventListener('click', () => { sortNames('asc'); });
+    sortDesc.addEventListener('click', () => { sortNames('desc'); });
+
+    function loadNames() {
+      if (window.namesData) {
+        if (Array.isArray(window.namesData)) {
+          namesByLetter = groupNamesArray(window.namesData);
+        } else {
+          namesByLetter = window.namesData;
+        }
+      } else {
+        namesByLetter = {
+          'அ': ['பெயர்கள் பெற முடியவில்லை. names.js கோப்பை சரி பார்க்கவும்.']
+        };
+      }
+      buildLetterOptions();
+      updateFilters();
+    }
+
+    loadNames();
+  </script>
+</body>
+</html>

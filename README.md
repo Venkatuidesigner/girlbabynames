@@ -1,2 +1,15 @@
-# tamil-name
-A Tamil baby names website providing meaningful and traditional names with meanings, categorized by letters, stars (nakshatra), and rasi.
+"# tamil-name",
+"A Tamil baby names website providing meaningful and traditional names with meanings, categorized by letters, stars (nakshatra), and rasi.",
+"",
+"## Local Demo",
+"Open `index.html` in a browser using a local web server so the page can load `names.json` correctly.",
+"",
+"Example using Python:",
+"",
+"```bash",
+"cd /Users/venkatesanmariyappan/Desktop/Projects/tamil-name",
+"python3 -m http.server 8000",
+"```",
+"",
+"Then visit `http://localhost:8000`.",
+"",
